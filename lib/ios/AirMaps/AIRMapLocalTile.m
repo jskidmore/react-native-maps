@@ -15,6 +15,22 @@
     BOOL _tileSizeSet;
 }
 
+- (void)setShouldReplaceMapContent:(BOOL)shouldReplaceMapContent
+{
+  _shouldReplaceMapContent = shouldReplaceMapContent;
+  if(self.tileOverlay) {
+    self.tileOverlay.canReplaceMapContent = _shouldReplaceMapContent;
+  }
+  [self update];
+}
+
+- (void)setFlipY:(BOOL)flipY
+{
+  _flipY = flipY;
+  if (self.tileOverlay) {
+    self.tileOverlay.geometryFlipped = _flipY;
+  }
+}
 
 - (void)setPathTemplate:(NSString *)pathTemplate{
     _pathTemplate = pathTemplate;
@@ -34,9 +50,13 @@
 {
     if (!_pathTemplateSet || !_tileSizeSet) return;
     self.tileOverlay = [[AIRMapLocalTileOverlay alloc] initWithURLTemplate:self.pathTemplate];
-    self.tileOverlay.canReplaceMapContent = NO;
+    self.tileOverlay.canReplaceMapContent = self.shouldReplaceMapContent;
     self.tileOverlay.tileSize = CGSizeMake(_tileSize, _tileSize);
-    self.tileOverlay.geometryFlipped = YES;
+
+    if (self.flipY) {
+        self.tileOverlay.geometryFlipped = self.flipY;
+    }
+
     self.renderer = [[MKTileOverlayRenderer alloc] initWithTileOverlay:self.tileOverlay];
 }
 
