@@ -69,6 +69,9 @@
     if (self.opacity) {
         self.renderer.alpha = self.opacity;
     }
+
+    CGFloat hardcodedAlpha = 0.4;
+    self.renderer.alpha = hardcodedAlpha;
 }
 
 - (void) update
