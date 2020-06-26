@@ -25,6 +25,8 @@
 
 @property (nonatomic, copy) NSString *pathTemplate;
 @property (nonatomic, assign) CGFloat tileSize;
+@property BOOL flipY;
+@property BOOL shouldReplaceMapContent;
 
 #pragma mark MKOverlay protocol
 
