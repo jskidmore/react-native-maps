@@ -30,6 +30,7 @@
   if (self.tileOverlay) {
     self.tileOverlay.geometryFlipped = _flipY;
   }
+  [self update];
 }
 
 - (void)setPathTemplate:(NSString *)pathTemplate{
@@ -46,11 +47,12 @@
     [self update];
 }
 
-- (void)setOpacity:(CGFloat)opacity{
-    _opacity = opacity;
+- (void)setOverlayOpacity:(CGFloat)overlayOpacity{
+    _overlayOpacity = overlayOpacity;
     if (self.renderer) {
-      self.renderer.alpha = _opacity;
+      self.renderer.alpha = _overlayOpacity;
     }
+    [self update];
 }
 
 - (void) createTileOverlayAndRendererIfPossible
@@ -66,12 +68,9 @@
 
     self.renderer = [[MKTileOverlayRenderer alloc] initWithTileOverlay:self.tileOverlay];
 
-    if (self.opacity) {
-        self.renderer.alpha = self.opacity;
+    if (self.overlayOpacity) {
+        self.renderer.alpha = self.overlayOpacity;
     }
-
-    CGFloat hardcodedAlpha = 0.4;
-    self.renderer.alpha = hardcodedAlpha;
 }
 
 - (void) update
