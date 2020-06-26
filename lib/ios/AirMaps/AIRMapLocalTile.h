@@ -27,6 +27,7 @@
 @property (nonatomic, assign) CGFloat tileSize;
 @property BOOL flipY;
 @property BOOL shouldReplaceMapContent;
+@property (nonatomic, assign) CGFloat opacity;
 
 #pragma mark MKOverlay protocol
 
