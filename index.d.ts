@@ -478,7 +478,7 @@ declare module "react-native-maps" {
     tileSize?: number;
     zIndex?: number;
     flipY?: boolean;
-    overlayTile?: number;
+    overlayOpacity?: number;
   }
 
   export class LocalTile extends React.Component<MapLocalTileProps, any> {}
