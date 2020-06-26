@@ -48,8 +48,8 @@
 
 - (void)setOpacity:(CGFloat)opacity{
     _opacity = opacity;
-    if (self.tileOverlay) {
-      self.tileOverlay.alpha = _opacity;
+    if (self.renderer) {
+      self.renderer.alpha = _opacity;
     }
 }
 
@@ -63,11 +63,12 @@
     if (self.flipY) {
         self.tileOverlay.geometryFlipped = self.flipY;
     }
-    if (self.opacity) {
-        self.tileOverlay.alpha = self.opacity;
-    }
 
     self.renderer = [[MKTileOverlayRenderer alloc] initWithTileOverlay:self.tileOverlay];
+
+    if (self.opacity) {
+        self.renderer.alpha = self.opacity;
+    }
 }
 
 - (void) update
