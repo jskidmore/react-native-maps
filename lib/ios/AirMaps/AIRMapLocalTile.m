@@ -34,15 +34,16 @@
 {
     if (!_pathTemplateSet || !_tileSizeSet) return;
     self.tileOverlay = [[AIRMapLocalTileOverlay alloc] initWithURLTemplate:self.pathTemplate];
-    self.tileOverlay.canReplaceMapContent = YES;
+    self.tileOverlay.canReplaceMapContent = NO;
     self.tileOverlay.tileSize = CGSizeMake(_tileSize, _tileSize);
+    self.tileOverlay.geometryFlipped = YES;
     self.renderer = [[MKTileOverlayRenderer alloc] initWithTileOverlay:self.tileOverlay];
 }
 
 - (void) update
 {
     if (!_renderer) return;
-    
+
     if (_map == nil) return;
     [_map removeOverlay:self];
     [_map addOverlay:self level:MKOverlayLevelAboveLabels];
