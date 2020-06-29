@@ -37,5 +37,7 @@ RCT_EXPORT_VIEW_PROPERTY(tileSize, CGFloat)
 RCT_EXPORT_VIEW_PROPERTY(flipY, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(shouldReplaceMapContent, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(overlayOpacity, CGFloat)
+RCT_EXPORT_VIEW_PROPERTY(overzoomEnabled, BOOL)
+RCT_EXPORT_VIEW_PROPERTY(overzoomThreshold, NSInteger)
 
 @end

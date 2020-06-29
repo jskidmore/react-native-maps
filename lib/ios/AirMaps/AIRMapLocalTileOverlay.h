@@ -9,4 +9,7 @@
 
 @interface AIRMapLocalTileOverlay : MKTileOverlay
 
+@property (nonatomic) BOOL overzoomEnabled;
+@property (nonatomic) NSInteger overzoomThreshold;
+
 @end

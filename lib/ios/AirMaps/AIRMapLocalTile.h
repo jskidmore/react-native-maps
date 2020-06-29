@@ -14,13 +14,14 @@
 #import <React/RCTView.h>
 #import "AIRMapCoordinate.h"
 #import "AIRMap.h"
+#import "AIRMapLocalTileOverlay.h"
 #import "RCTConvert+AirMap.h"
 
 @interface AIRMapLocalTile : MKAnnotationView <MKOverlay>
 
 @property (nonatomic, weak) AIRMap *map;
 
-@property (nonatomic, strong) MKTileOverlay *tileOverlay;
+@property (nonatomic, strong) AIRMapLocalTileOverlay *tileOverlay;
 @property (nonatomic, strong) MKTileOverlayRenderer *renderer;
 
 @property (nonatomic, copy) NSString *pathTemplate;
@@ -28,6 +29,8 @@
 @property BOOL flipY;
 @property BOOL shouldReplaceMapContent;
 @property (nonatomic, assign) CGFloat overlayOpacity;
+@property BOOL overzoomEnabled;
+@property NSInteger overzoomThreshold;
 
 #pragma mark MKOverlay protocol
 

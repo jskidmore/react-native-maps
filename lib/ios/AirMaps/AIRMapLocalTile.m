@@ -55,6 +55,24 @@
     [self update];
 }
 
+- (void)setOverzoomEnabled:(BOOL)overzoomEnabled
+{
+    _overzoomEnabled = overzoomEnabled;
+    if(self.tileOverlay) {
+        self.tileOverlay.overzoomEnabled = _overzoomEnabled;
+    }
+    [self update];
+}
+
+- (void)setOverzoomThreshold:(NSInteger)overzoomThreshold
+{
+    _overzoomThreshold = overzoomThreshold;
+    if(self.tileOverlay) {
+        self.tileOverlay.overzoomThreshold = overzoomThreshold;
+    }
+    [self update];
+}
+
 - (void) createTileOverlayAndRendererIfPossible
 {
     if (!_pathTemplateSet || !_tileSizeSet) return;
@@ -64,6 +82,12 @@
 
     if (self.flipY) {
         self.tileOverlay.geometryFlipped = self.flipY;
+    }
+    if (self.overzoomEnabled) {
+        self.tileOverlay.overzoomEnabled = self.overzoomEnabled;
+    }
+    if (self.overzoomThreshold) {
+        self.tileOverlay.overzoomThreshold = self.overzoomThreshold;
     }
 
     self.renderer = [[MKTileOverlayRenderer alloc] initWithTileOverlay:self.tileOverlay];
